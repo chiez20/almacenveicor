@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Admin - Almacen Veicor </title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/estylus.css">
+	<link rel="stylesheet" href="css/usuarios.css">
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<br>
+
+	<table>
+		<tr>
+			<th>Nombre</th>
+			<th>Correo</th>
+			<th>Usuario</th>
+			<th>Contraseña</th>
+			<th>ID Tipo Usuario</th>	
+			<th>Acciones</th>	
+		</tr>
+
+		<?php 
+        include("conexion.php");
+		$sql="SELECT * from usuarios";
+		$result=mysqli_query($conexion,$sql);
+
+		while($mostrar=mysqli_fetch_array($result)){
+		 ?>
+
+		<tr>
+			<td><?php echo $mostrar['Nombre'] ?></td>
+			<td><?php echo $mostrar['Correo'] ?></td>
+			<td><?php echo $mostrar['Usuario'] ?></td>
+			<td><?php echo $mostrar['Contraseña'] ?></td>
+			<td><?php echo $mostrar['Descripcion'] ?></td>
+			<td>
+				<a class="link_edit" href="a"> Editar </a>
+				<a class="link_delete" href="a"> Eliminar </a>
+			</td>
+		</tr>
+	<?php 
+	}
+	 ?>
+	</table>
+
+</body>
+</html>
